@@ -39,10 +39,17 @@ mern-blog/
 
 ## Getting Started
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week4-Assignment.md` file
-4. Complete the tasks outlined in the assignment
+1. Ensure Node.js (v18+) and MongoDB are installed and running
+2. Create environment files from the provided examples
+    - `server/.env` (copy from `server/.env.example`)
+    - `client/.env` (copy from `client/.env.example`)
+3. Install dependencies
+    - In `server`: `npm install`
+    - In `client`: `npm install`
+4. Run development servers in two terminals
+    - In `server`: `npm run dev`
+    - In `client`: `npm run dev`
+5. Open the client at http://localhost:5173 (Vite proxy forwards API to http://localhost:5000)
 
 ## Files Included
 
@@ -58,6 +65,35 @@ mern-blog/
 - MongoDB (local installation or Atlas account)
 - npm or yarn
 - Git
+
+## Setup & Run
+
+1. Server configuration (`server/.env`):
+   - `PORT=5000`
+   - `MONGODB_URI=mongodb://localhost:27017/mern_blog`
+   - `JWT_SECRET=change_this_secret`
+   - `CLIENT_ORIGIN=http://localhost:5173`
+2. Client configuration (`client/.env`):
+   - `VITE_API_BASE=/api`
+   - `VITE_SERVER_ORIGIN=http://localhost:5000`
+3. Start servers:
+   - Server: `npm run dev` (nodemon)
+   - Client: `npm run dev` (Vite)
+
+## API Endpoints
+
+- Auth
+  - POST `/api/auth/register`
+  - POST `/api/auth/login`
+- Posts
+  - GET `/api/posts`
+  - GET `/api/posts/:id`
+  - POST `/api/posts` (Bearer token required; multipart for `image`)
+  - PUT `/api/posts/:id` (Bearer token required; multipart for `image`)
+  - DELETE `/api/posts/:id` (Bearer token required)
+- Categories
+  - GET `/api/categories`
+  - POST `/api/categories`
 
 ## Submission
 
